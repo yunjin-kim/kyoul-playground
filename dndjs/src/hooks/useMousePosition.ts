@@ -2,17 +2,7 @@ import { useEffect, useState } from "react";
 
 type MousePosition = Partial<MouseEvent>;
 
-interface MouseDownCoordinationType {
-  xCoordination: number;
-  yCoordination: number;
-}
-
-interface Props {
-  ref: HTMLDivElement | null;
-  mouseDownCoordination: MouseDownCoordinationType;
-}
-
-const useMousePosition = ({ ref, mouseDownCoordination }: Props) => {
+const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     clientX: 0,
     clientY: 0,
@@ -42,18 +32,6 @@ const useMousePosition = ({ ref, mouseDownCoordination }: Props) => {
       window.removeEventListener("mousemove", updateMousePosition);
     };
   }, []);
-
-  useEffect(() => {
-    if (!ref) return;
-
-    if (mousePosition.pageX && mousePosition.pageY) {
-      ref.style.transform = `translate3d(${
-        mousePosition.pageX - mouseDownCoordination.xCoordination
-      }px, ${
-        mousePosition.pageY - mouseDownCoordination.yCoordination
-      }px, 0px)`;
-    }
-  }, [mousePosition]);
 
   return mousePosition;
 };
