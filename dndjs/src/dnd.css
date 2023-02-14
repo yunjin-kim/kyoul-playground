@@ -1,0 +1,11 @@
+.before-drop-border-top {
+  border-top: 5px solid black;
+}
+
+.before-drop-border {
+  border: 1px solid black;
+}
+
+.before-drop-border-bottom {
+  border-bottom: 5px solid black;
+}
